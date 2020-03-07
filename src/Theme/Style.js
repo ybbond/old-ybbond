@@ -1,8 +1,8 @@
 // @flow
-import React from "react";
+import React from 'react';
 
 type Props = {
-  dark: boolean
+  dark: boolean,
 };
 
 const Style = (props: Props) => (
@@ -10,9 +10,9 @@ const Style = (props: Props) => (
     dangerouslySetInnerHTML={{
       __html: `
 html {
-  background-color: ${props.dark ? "#1b1b1b" : "#fdfdfd"};
+  background-color: ${props.dark ? '#1b1b1b' : '#fdfdfd'};
 }
-      `
+      `,
     }}
   />
 );

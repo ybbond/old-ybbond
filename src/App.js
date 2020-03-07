@@ -1,23 +1,23 @@
 // @flow
-import React, { Component } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "styled-theming";
+import React, {Component} from 'react';
+import styled, {ThemeProvider} from 'styled-components';
+import theme from 'styled-theming';
 
-import Style from "./Theme/Style";
+import Style from './Theme/Style';
 
-const backgroundColor = theme("mode", {
-  light: "#fdfdfd",
-  dark: "#1b1b1b"
+const backgroundColor = theme('mode', {
+  light: '#fdfdfd',
+  dark: '#1b1b1b',
 });
 
-const color = theme("mode", {
-  light: "#1b1b1b",
-  dark: "#fdfdfd"
+const color = theme('mode', {
+  light: '#1b1b1b',
+  dark: '#fdfdfd',
 });
 
-const linkColor = theme("mode", {
-  light: "#2d2d2d",
-  dark: "#d8dcd5"
+const linkColor = theme('mode', {
+  light: '#2d2d2d',
+  dark: '#d8dcd5',
 });
 
 const Text = styled.p`
@@ -40,11 +40,11 @@ const darkmode = true;
 class App extends Component<{}> {
   render() {
     return (
-      <ThemeProvider theme={{ mode: darkmode ? "dark" : "light" }}>
+      <ThemeProvider theme={{mode: darkmode ? 'dark' : 'light'}}>
         <Wrapper>
           <Style dark={darkmode} />
           <center>
-            <div style={{ maxWidth: 600, textAlign: "left" }}>
+            <div style={{maxWidth: 600, textAlign: 'left'}}>
               <Text as="h1">Yohanes Bandung Bondowoso</Text>
               <Text>
                 Currently work as Frontend Engineer of kumparan.com in Jakarta,
@@ -62,7 +62,7 @@ class App extends Component<{}> {
                 I try to learn from everyone, and everything.
                 <br />
                 <br />
-                Contact:{" "}
+                Contact:{' '}
                 <Link
                   href="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev"
                   target="_top"
@@ -71,7 +71,7 @@ class App extends Component<{}> {
                 </Link>
               </Text>
               <Text>
-                Other site:{" "}
+                Other site:{' '}
                 <Link href="https://reason.ybbond.dev">reason.ybbond.dev</Link>
               </Text>
             </div>
