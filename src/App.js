@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "styled-theming";
@@ -36,12 +37,12 @@ const Link = styled.a`
 
 const darkmode = true;
 
-class App extends Component {
+class App extends Component<{}> {
   render() {
     return (
       <ThemeProvider theme={{ mode: darkmode ? "dark" : "light" }}>
         <Wrapper>
-          <Style dark={darkmode ? "dark" : light} />
+          <Style dark={darkmode} />
           <center>
             <div style={{ maxWidth: 600, textAlign: "left" }}>
               <Text as="h1">Yohanes Bandung Bondowoso</Text>

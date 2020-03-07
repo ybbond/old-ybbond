@@ -1,6 +1,11 @@
+// @flow
 import React from "react";
 
-const Style = props => (
+type Props = {
+  dark: boolean
+};
+
+const Style = (props: Props) => (
   <style
     dangerouslySetInnerHTML={{
       __html: `
@@ -12,4 +17,4 @@ html {
   />
 );
 
-export default React.memo(Style);
+export default React.memo<Props>(Style);
