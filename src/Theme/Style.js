@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import {colors} from './colors';
 
 type Props = {
   dark: boolean,
@@ -10,7 +11,12 @@ const Style = (props: Props) => (
     dangerouslySetInnerHTML={{
       __html: `
 html {
-  background-color: ${props.dark ? '#1b1b1b' : '#fdfdfd'};
+  background-color: ${props.dark ? colors.dark : colors.light};
+}
+::selection {
+  background-color: ${
+    props.dark ? colors.darkSelection : colors.lightSelection
+  };
 }
       `,
     }}
