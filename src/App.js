@@ -31,7 +31,17 @@ const InnerWrapper = styled.div`
 
 const App = () => {
   const [dark, setDark] = React.useState(true);
-  const toggleDark = () => setDark(!dark);
+
+  React.useEffect(() => {
+    const isDark = localStorage.getItem('dark') === 'true';
+    setDark(isDark);
+  }, []);
+
+  const toggleDark = () => {
+    const newState = !dark;
+    localStorage.setItem('dark', JSON.stringify(newState));
+    setDark(newState);
+  };
 
   return (
     <ThemeProvider theme={{mode: dark ? 'dark' : 'light'}}>
