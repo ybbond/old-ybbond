@@ -1,85 +1,80 @@
 // @flow
-import React, {Component} from 'react';
+import React from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 import theme from 'styled-theming';
 
+import Button from './Components/Button';
+import Link from './Components/Link';
+import Text from './Components/Text';
 import Style from './Theme/Style';
+import {colors} from './Theme/colors';
 
 const backgroundColor = theme('mode', {
-  light: '#fdfdfd',
-  dark: '#1b1b1b',
+  light: colors.light,
+  dark: colors.dark,
 });
 
-const color = theme('mode', {
-  light: '#1b1b1b',
-  dark: '#fdfdfd',
-});
-
-const linkColor = theme('mode', {
-  light: '#2d2d2d',
-  dark: '#d8dcd5',
-});
-
-const Text = styled.p`
-  font-family: Trebuchet MS, Helvetica, sans-serif;
-`;
-
-const Wrapper = styled.div`
+const OuterWrapper = styled.div`
   min-height: calc(100vh - 2px);
   background-color: ${backgroundColor};
-  color: ${color};
   padding: 1px;
 `;
 
-const Link = styled.a`
-  color: ${linkColor};
+const InnerWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 600px;
+
+  @media (max-width: 599px) {
+    padding: 0 10px;
+  }
 `;
 
-const darkmode = true;
+const App = () => {
+  const [dark, setDark] = React.useState(true);
+  const toggleDark = () => setDark(!dark);
 
-class App extends Component<{}> {
-  render() {
-    return (
-      <ThemeProvider theme={{mode: darkmode ? 'dark' : 'light'}}>
-        <Wrapper>
-          <Style dark={darkmode} />
-          <center>
-            <div style={{maxWidth: 600, textAlign: 'left'}}>
-              <Text as="h1">Yohanes Bandung Bondowoso</Text>
-              <Text>
-                Currently work as Frontend Engineer of kumparan.com in Jakarta,
-                Indonesia. Building it with React, React Native for Android and
-                iOS.
-                <br />
-                <br />
-                Eager to learn.
-                <br />
-                Hardships.
-                <br />
-                I cannot say that I am humble, but I learn from experience that
-                each individuals, their own excellences.
-                <br />
-                I try to learn from everyone, and everything.
-                <br />
-                <br />
-                Contact:{' '}
-                <Link
-                  href="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev"
-                  target="_top"
-                >
-                  bandungpenting@gmail.com
-                </Link>
-              </Text>
-              <Text>
-                Other site:{' '}
-                <Link href="https://reason.ybbond.dev">reason.ybbond.dev</Link>
-              </Text>
-            </div>
-          </center>
-        </Wrapper>
-      </ThemeProvider>
-    );
-  }
-}
+  return (
+    <ThemeProvider theme={{mode: dark ? 'dark' : 'light'}}>
+      <Style dark={dark} />
+      <OuterWrapper>
+        <InnerWrapper>
+          <Text as="h1">
+            Yohanes Bandung Bondowoso{' '}
+            <Button aria-hidden="true" onClick={toggleDark}>
+              {dark ? '🌛' : '🌞'}
+            </Button>
+          </Text>
+          <Text>
+            Currently work as Frontend Engineer of kumparan.com in Jakarta,
+            Indonesia. Building it with React, React Native for Android and iOS.
+            <br />
+            <br />
+            Eager to learn.
+            <br />
+            Hardships.
+            <br />
+            I cannot say that I am humble, but I learn from experience that each
+            individuals, their own excellences.
+            <br />
+            I try to learn from everyone, and everything.
+            <br />
+            <br />
+            Contact:{' '}
+            <Link
+              href="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev"
+              target="_top"
+            >
+              bandungpenting@gmail.com
+            </Link>
+          </Text>
+          <Text>
+            Other site:{' '}
+            <Link href="https://reason.ybbond.dev">reason.ybbond.dev</Link>
+          </Text>
+        </InnerWrapper>
+      </OuterWrapper>
+    </ThemeProvider>
+  );
+};
 
 export default App;
