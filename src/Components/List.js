@@ -18,7 +18,7 @@ const ListBase: StyledComponent<Props, {}, {}> = styled.ul`
           position: relative;
           list-style: none;
           padding-left: 20px;
-          margin-bottom: 5px;
+          margin-bottom: 10px;
           &:before {
             display: inline-block;
             content: '- ';
@@ -35,7 +35,7 @@ const List = (props: Props) => {
   const {as, children, ...rest} = props;
   return as && as === 'li' ? (
     <ListBase as={as} {...rest}>
-      <Text as="span">{children}</Text>
+      <Text>{children}</Text>
     </ListBase>
   ) : (
     <ListBase as={as} {...rest}>

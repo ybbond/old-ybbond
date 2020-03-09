@@ -1,16 +1,26 @@
 // @flow
+import React from 'react';
 import styled, {css, type StyledComponent} from 'styled-components';
 import theme from 'styled-theming';
 import {colors} from '../Theme/colors';
 
-const color = theme('mode', {
-  light: colors.dark,
-  dark: colors.light,
-});
-
-const colorHeading = theme('mode', {
-  light: colors.darkGreen,
-  dark: colors.green,
+const color = theme.variants('mode', 'variant', {
+  default: {
+    light: colors.dark,
+    dark: colors.light,
+  },
+  green: {
+    light: colors.darkGreen,
+    dark: colors.green,
+  },
+  red: {
+    light: colors.brown,
+    dark: colors.orange,
+  },
+  blue: {
+    light: colors.linkDark,
+    dark: colors.linkLight,
+  },
 });
 
 const mobileSizeResolver = (as?: string) => {
@@ -50,10 +60,10 @@ const headingTagResolver = (as?: string) => {
 
 type TextProps = {
   as?: string,
-} & HTMLParagraphElement &
-  HTMLHeadingElement;
+  variant?: 'default' | 'red' | 'green' | 'blue',
+};
 
-const Text: StyledComponent<TextProps, {}, {}> = styled.p`
+const TextBase: StyledComponent<TextProps, {}, {}> = styled.p`
   color: ${color};
   letter-spacing: 0.03rem;
   line-height: 1.4;
@@ -68,7 +78,6 @@ const Text: StyledComponent<TextProps, {}, {}> = styled.p`
   ${props =>
     props.as && props.as[0] === 'h'
       ? css`
-          color: ${colorHeading};
           &:before {
             content: ${props => `"${headingTagResolver(props.as)}"`};
             font-size: 0.8em;
@@ -76,5 +85,14 @@ const Text: StyledComponent<TextProps, {}, {}> = styled.p`
         `
       : css``}
 `;
+
+const Text = (props: TextProps) => {
+  let {as, variant: baseVariant} = props;
+  let variant = baseVariant ?? 'default';
+  if (as && as[0] === 'h') {
+    variant = 'green';
+  }
+  return <TextBase {...props} as={as} variant={baseVariant ?? variant} />;
+};
 
 export default Text;

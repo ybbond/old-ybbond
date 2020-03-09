@@ -21,11 +21,12 @@ type LinkProps = {to: string, children: React$Node};
 const LinkBase: StyledComponent<{isCurrentRoute?: boolean}, {}, {}> = styled.a`
   color: ${({isCurrentRoute}) => (isCurrentRoute ? linkHoverColor : linkColor)};
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline solid
+    ${({isCurrentRoute}) => (isCurrentRoute ? linkHoverColor : linkColor)} 0.5px;
 
   &:hover {
     color: ${linkHoverColor};
-    text-decoration: underline solid ${linkHoverColor};
+    text-decoration: underline solid ${linkHoverColor} 2px;
   }
 `;
 
