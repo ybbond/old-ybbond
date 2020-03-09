@@ -1,27 +1,26 @@
 // @flow
 import React from 'react';
-import {useHistory} from 'react-router';
 
 import Text from '../Components/Text';
 import List from '../Components/List';
+import Link from '../Components/Link';
 
 const UsesPage = () => {
-  let history = useHistory();
-
-  const handleClick = () => {
-    history.push('/');
-  };
   return (
     <React.Fragment>
-      <Text onClick={handleClick}>hehe</Text>
       <Text as="h2">Platform</Text>
       <List>
-        <List as="li">{'Macbook Pro 2018 13" (Office)'}</List>
-        <List as="li">{'Low-End PC with Manjaro Linux XFCE (Home)'}</List>
+        <List as="li">Macbook Pro 2018 13&quot; (Office)</List>
+        <List as="li">Low-End PC with Manjaro Linux XFCE (Home)</List>
       </List>
       <Text as="h2">Hardware</Text>
       <List>
-        <List as="li">Ducky One 2 Mini Keyboard image</List>
+        <List as="li">
+          Ducky One 2 Mini Keyboard{' '}
+          <Link to="https://twitter.com/bandungpenting/status/1146845120618090497">
+            image
+          </Link>
+        </List>
       </List>
       <Text as="h2">Code Editor</Text>
       <List>

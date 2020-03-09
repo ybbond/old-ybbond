@@ -57,6 +57,8 @@ const Text: StyledComponent<TextProps, {}, {}> = styled.p`
   color: ${color};
   letter-spacing: 0.03rem;
   line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   @media (max-width: 599px) {
     font-size: ${({as}) => `${mobileSizeResolver(as)}rem`};

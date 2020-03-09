@@ -10,16 +10,22 @@ type Props = {|
 |};
 
 const ListBase: StyledComponent<Props, {}, {}> = styled.ul`
-  list-style: none;
   padding: 0;
 
   ${props =>
     props.as === 'li'
       ? css`
+          position: relative;
+          list-style: none;
+          padding-left: 20px;
           margin-bottom: 5px;
           &:before {
+            display: inline-block;
             content: '- ';
+            position: absolute;
+            width: 20px;
             color: ${colors.orange};
+            left: 0;
           }
         `
       : css``}
