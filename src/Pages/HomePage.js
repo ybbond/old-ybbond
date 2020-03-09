@@ -23,10 +23,7 @@ const CVPage = () => {
         <br />
         <br />
         Contact:{' '}
-        <Link
-          to="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev"
-          target="_top"
-        >
+        <Link to="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev">
           bandungpenting@gmail.com
         </Link>
       </Text>
