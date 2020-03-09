@@ -11,23 +11,33 @@ const CVPage = () => {
       <Text as="h2">Quests</Text>
       <List>
         <List as="li">
-          <date dateTime="2014">2014</date>
+          <Text as="span" variant="red" title="mid 2014">
+            <time dateTime="2014">2014</time>
+          </Text>
           <br />
           Design Intern <Link to="https://www.xg.co.id/">@X-Graphic</Link>
         </List>
         <List as="li">
-          <date dateTime="2016">2016</date> - <date dateTime="2018">2018</date>
+          <Text as="span" variant="red" title="Oct 2016 - Mar 2018">
+            <time dateTime="2016">2016</time> -{' '}
+            <time dateTime="2018">2018</time>
+          </Text>
           <br />
           Quality Assurance{' '}
           <Link to="https://www.touchten.com/">@Touchten Games</Link>
         </List>
         <List as="li">
-          <date dateTime="2018">2018</date> - <date dateTime="2019">2019</date>
+          <Text as="span" variant="red" title="Mar 2018 - June 2019">
+            <time dateTime="2018">2018</time> -{' '}
+            <time dateTime="2019">2019</time>
+          </Text>
           <br />
           Frontend Engineer <Link to="https://vospay.id/">@Vospay</Link>
         </List>
         <List as="li">
-          <date dateTime="2019">2019</date> -
+          <Text as="span" variant="red" title="July 2019 - present">
+            <time dateTime="2019">2019</time> -
+          </Text>
           <br />
           Frontend Engineer <Link to="https://kumparan.com/">@kumparan</Link>
         </List>
