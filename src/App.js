@@ -19,6 +19,11 @@ const backgroundColor = theme('mode', {
   dark: colors.dark,
 });
 
+const borderColor = theme('mode', {
+  light: colors.dark,
+  dark: colors.light,
+});
+
 const OuterWrapper = styled.div`
   min-height: calc(100vh - 2px);
   background-color: ${backgroundColor};
@@ -32,6 +37,16 @@ const InnerWrapper = styled.div`
   @media (max-width: 599px) {
     padding: 0 10px;
   }
+`;
+
+const Header = styled.header`
+  margin-bottom: 30px;
+`;
+
+const Footer = styled.footer`
+  margin-top: 70px;
+  padding: 20px 0;
+  border-top: 2px dashed ${borderColor};
 `;
 
 const App = () => {
@@ -53,16 +68,18 @@ const App = () => {
       <Style dark={dark} />
       <OuterWrapper>
         <InnerWrapper>
-          <Text as="h1">
-            Yohanes Bandung Bondowoso{' '}
-            <Button aria-hidden="true" onClick={toggleDark}>
-              {dark ? '🌛' : '🌞'}
-            </Button>
-          </Text>
+          <Header>
+            <Text as="h1">
+              Yohanes Bandung Bondowoso{' '}
+              <Button aria-hidden="true" onClick={toggleDark}>
+                {dark ? '🌛' : '🌞'}
+              </Button>
+            </Text>
             <Text>
               <Link to="/">CV</Link> - <Link to="/uses">Uses</Link> -{' '}
               <Link to="/about">About</Link>
             </Text>
+          </Header>
           <Switch>
             <Route exact path="/">
               <CVPage />
@@ -77,6 +94,19 @@ const App = () => {
               <NotFoundPage />
             </Route>
           </Switch>
+          <Footer>
+            <Text>See you sooner :)</Text>
+            <Text>
+              Contact:{' '}
+              <Link to="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev">
+                bandungpenting@gmail.com
+              </Link>
+            </Text>
+            <Text>
+              Other site:{' '}
+              <Link to="https://reason.ybbond.dev">reason.ybbond.dev</Link>
+            </Text>
+          </Footer>
         </InnerWrapper>
       </OuterWrapper>
     </ThemeProvider>
