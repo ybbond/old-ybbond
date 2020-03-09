@@ -10,6 +10,7 @@ const colors = {
   linkDark: '#2585ff',
   green: '#79d688',
   darkGreen: '#257933',
+  orange: '#f9690e',
 };
 
 export {colors};

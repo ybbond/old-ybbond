@@ -64,7 +64,7 @@ const Text: StyledComponent<TextProps, {}, {}> = styled.p`
   }
 
   ${props =>
-    props.as
+    props.as && props.as[0] === 'h'
       ? css`
           color: ${colorHeading};
           &:before {
