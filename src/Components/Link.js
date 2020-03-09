@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import {useHistory} from 'react-router';
+import {useHistory, useRouteMatch} from 'react-router';
 import styled, {type StyledComponent} from 'styled-components';
 import theme from 'styled-theming';
 
@@ -11,31 +11,45 @@ const linkColor = theme('mode', {
   dark: colors.linkLight,
 });
 
+const linkHoverColor = theme('mode', {
+  light: colors.brown,
+  dark: colors.orange,
+});
+
 type LinkProps = {to: string, children: React$Node};
 
-const LinkBase: StyledComponent<{}, {}, {}> = styled.a`
-  color: ${linkColor};
+const LinkBase: StyledComponent<{isCurrentRoute?: boolean}, {}, {}> = styled.a`
+  color: ${({isCurrentRoute}) => (isCurrentRoute ? linkHoverColor : linkColor)};
   cursor: pointer;
-  text-decoration: underline solid ${linkColor};
+  text-decoration: none;
 
   &:hover {
-    color: ${colors.orange};
-    text-decoration: underline solid ${colors.orange};
+    color: ${linkHoverColor};
+    text-decoration: underline solid ${linkHoverColor};
   }
 `;
 
 const Link = ({children, to, ...props}: LinkProps) => {
-  const history = useHistory();
   const isExternal = to[0] !== '/';
+  if (isExternal) {
+    return (
+      <LinkBase {...props} target="_blank" rel="noopener noreferrer" href={to}>
+        {children}
+      </LinkBase>
+    );
+  }
+  const {isExact = false} = useRouteMatch(to) || {};
+  const history = useHistory();
   const handleClick = () => {
     history.push(to);
   };
-  return isExternal ? (
-    <LinkBase {...props} target="_blank" rel="noopener noreferrer" href={to}>
-      {children}
-    </LinkBase>
-  ) : (
-    <LinkBase as="span" onClick={handleClick}>
+  return (
+    <LinkBase
+      {...props}
+      as="span"
+      onClick={handleClick}
+      isCurrentRoute={isExact}
+    >
       {children}
     </LinkBase>
   );

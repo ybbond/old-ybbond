@@ -11,6 +11,7 @@ const colors = {
   green: '#79d688',
   darkGreen: '#257933',
   orange: '#f9690e',
+  brown: '#ce5000',
 };
 
 export {colors};
