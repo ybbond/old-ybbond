@@ -1,10 +1,13 @@
 // @flow
 import React from 'react';
+import {Route, Switch} from 'react-router';
 import styled, {ThemeProvider} from 'styled-components';
 import theme from 'styled-theming';
 
+import CVPage from './Pages/CVPage';
+import UsesPage from './Pages/UsesPage';
+import NotFoundPage from './Pages/NotFoundPage';
 import Button from './Components/Button';
-import Link from './Components/Link';
 import Text from './Components/Text';
 import Style from './Theme/Style';
 import {colors} from './Theme/colors';
@@ -54,33 +57,17 @@ const App = () => {
               {dark ? '🌛' : '🌞'}
             </Button>
           </Text>
-          <Text>
-            Currently work as Frontend Engineer of kumparan.com in Jakarta,
-            Indonesia. Building it with React, React Native for Android and iOS.
-            <br />
-            <br />
-            Eager to learn.
-            <br />
-            Hardships.
-            <br />
-            I cannot say that I am humble, but I learn from experience that each
-            individuals, their own excellences.
-            <br />
-            I try to learn from everyone, and everything.
-            <br />
-            <br />
-            Contact:{' '}
-            <Link
-              href="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev"
-              target="_top"
-            >
-              bandungpenting@gmail.com
-            </Link>
-          </Text>
-          <Text>
-            Other site:{' '}
-            <Link href="https://reason.ybbond.dev">reason.ybbond.dev</Link>
-          </Text>
+          <Switch>
+            <Route exact path="/">
+              <CVPage />
+            </Route>
+            <Route path="/uses">
+              <UsesPage />
+            </Route>
+            <Route>
+              <NotFoundPage />
+            </Route>
+          </Switch>
         </InnerWrapper>
       </OuterWrapper>
     </ThemeProvider>
