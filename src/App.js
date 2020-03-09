@@ -4,7 +4,7 @@ import {Route, Switch} from 'react-router';
 import styled, {ThemeProvider} from 'styled-components';
 import theme from 'styled-theming';
 
-import HomePage from './Pages/HomePage';
+import AboutPage from './Pages/AboutPage';
 import CVPage from './Pages/CVPage';
 import UsesPage from './Pages/UsesPage';
 import NotFoundPage from './Pages/NotFoundPage';
@@ -59,19 +59,19 @@ const App = () => {
               {dark ? '🌛' : '🌞'}
             </Button>
           </Text>
-          <Text>
-            <Link to="/">Home</Link> - <Link to="/cv">CV</Link> -{' '}
-            <Link to="/uses">Uses</Link>
-          </Text>
+            <Text>
+              <Link to="/">CV</Link> - <Link to="/uses">Uses</Link> -{' '}
+              <Link to="/about">About</Link>
+            </Text>
           <Switch>
             <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/cv">
               <CVPage />
             </Route>
             <Route path="/uses">
               <UsesPage />
+            </Route>
+            <Route path="/about">
+              <AboutPage />
             </Route>
             <Route>
               <NotFoundPage />
