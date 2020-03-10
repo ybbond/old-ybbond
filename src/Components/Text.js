@@ -1,6 +1,10 @@
 // @flow
 import React from 'react';
-import styled, {css, type StyledComponent} from 'styled-components';
+import styled, {
+  css,
+  StyleSheetManager,
+  type StyledComponent,
+} from 'styled-components';
 import theme from 'styled-theming';
 import {colors} from '../Theme/colors';
 
@@ -60,6 +64,7 @@ const headingTagResolver = (as?: string) => {
 
 type TextProps = {
   as?: string,
+  children: React$Node,
   variant?: 'default' | 'red' | 'green' | 'blue',
 };
 
@@ -86,13 +91,19 @@ const TextBase: StyledComponent<TextProps, {}, {}> = styled.p`
       : css``}
 `;
 
-const Text = (props: TextProps) => {
+const Text = ({children, ...props}: TextProps) => {
   let {as, variant: baseVariant} = props;
   let variant = baseVariant ?? 'default';
   if (as && as[0] === 'h') {
     variant = 'green';
   }
-  return <TextBase {...props} as={as} variant={baseVariant ?? variant} />;
+  return (
+    <StyleSheetManager disableVendorPrefixes>
+      <TextBase {...props} as={as} variant={baseVariant ?? variant}>
+        {children}
+      </TextBase>
+    </StyleSheetManager>
+  );
 };
 
 export default Text;
