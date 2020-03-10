@@ -31,6 +31,12 @@ const LinkBase: StyledComponent<{isCurrentRoute?: boolean}, {}, {}> = styled.a`
 `;
 
 const Link = ({children, to, ...props}: LinkProps) => {
+  const history = useHistory();
+
+  Link.goTo = (to: string) => {
+    history.push(to);
+  };
+
   const isExternal = to[0] !== '/';
   if (isExternal) {
     return (
@@ -39,11 +45,12 @@ const Link = ({children, to, ...props}: LinkProps) => {
       </LinkBase>
     );
   }
+
   const {isExact = false} = useRouteMatch(to) || {};
-  const history = useHistory();
   const handleClick = () => {
     history.push(to);
   };
+
   return (
     <LinkBase
       {...props}

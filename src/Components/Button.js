@@ -4,7 +4,7 @@ import {colors} from '../Theme/colors';
 
 type ButtonProps = {
   onClick: () => void,
-} & HTMLButtonElement;
+};
 
 const Button: StyledComponent<ButtonProps, {}, {}> = styled.button`
   background-color: ${colors.transparent};
@@ -13,6 +13,15 @@ const Button: StyledComponent<ButtonProps, {}, {}> = styled.button`
   cursor: pointer;
   font-size: 1em;
   padding: 0;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus {
+    outline: ${colors.lightSelection} solid 3px;
+    outline-offset: 7px;
+  }
 `;
 
 export default Button;

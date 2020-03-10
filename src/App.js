@@ -71,13 +71,39 @@ const App = () => {
           <Header>
             <Text as="h1">
               Yohanes Bandung Bondowoso{' '}
-              <Button aria-hidden="true" onClick={toggleDark}>
+              <Button
+                aria-label="Toggle dark mode, is current mode dark?"
+                aria-pressed={dark}
+                onClick={toggleDark}
+                tabindex="0"
+              >
                 {dark ? '🌛' : '🌞'}
               </Button>
             </Text>
             <Text>
-              <Link to="/">CV</Link> - <Link to="/uses">Uses</Link> -{' '}
-              <Link to="/about">About</Link>
+              <Button
+                aria-label="Go to CV Page"
+                onClick={() => Link.goTo('/')}
+                tabindex="1"
+              >
+                <Link to="/">CV</Link>
+              </Button>{' '}
+              -{' '}
+              <Button
+                aria-label="Go to page that lists the tools I use"
+                onClick={() => Link.goTo('/uses')}
+                tabindex="2"
+              >
+                <Link to="/uses">Uses</Link>
+              </Button>{' '}
+              -{' '}
+              <Button
+                aria-label="Go to About Page"
+                onClick={() => Link.goTo('/about')}
+                tabindex="3"
+              >
+                <Link to="/about">About</Link>
+              </Button>
             </Text>
           </Header>
           <Switch>
