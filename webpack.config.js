@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'ybbond.dev',
       template: 'public/index.html',
       favicon: 'public/favicon.ico',
     }),
