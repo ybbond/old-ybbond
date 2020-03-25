@@ -1,27 +1,18 @@
 // @flow
 import React from 'react';
-import {Route, Switch} from 'react-router';
 import styled, {ThemeProvider} from 'styled-components';
+import {Router} from 'react-router';
+import {createBrowserHistory} from 'history';
 import theme from 'styled-theming';
 
-import AboutPage from './Pages/AboutPage';
-import CVPage from './Pages/CVPage';
-import UsesPage from './Pages/UsesPage';
-import NotFoundPage from './Pages/NotFoundPage';
-import Button from './Components/Button';
-import Link from './Components/Link';
-import Text from './Components/Text';
+import routes from './routes';
+import HeaderFooter from './Components/HeaderFooter';
 import Style from './Theme/Style';
 import {colors} from './Theme/colors';
 
 const backgroundColor = theme('mode', {
   light: colors.light,
   dark: colors.dark,
-});
-
-const borderColor = theme('mode', {
-  light: colors.dark,
-  dark: colors.light,
 });
 
 const OuterWrapper = styled.div`
@@ -39,15 +30,7 @@ const InnerWrapper = styled.div`
   }
 `;
 
-const Header = styled.header`
-  margin-bottom: 30px;
-`;
-
-const Footer = styled.footer`
-  margin-top: 70px;
-  padding: 20px 0;
-  border-top: 2px dashed ${borderColor};
-`;
+const history = createBrowserHistory();
 
 const App = () => {
   const [dark, setDark] = React.useState(true);
@@ -64,69 +47,18 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={{mode: dark ? 'dark' : 'light'}}>
-      <Style dark={dark} />
-      <OuterWrapper>
-        <InnerWrapper>
-          <Header>
-            <Text as="h1">
-              Yohanes Bandung Bondowoso{' '}
-              <Button
-                aria-label="Toggle dark mode, is current mode dark?"
-                aria-pressed={dark}
-                onClick={toggleDark}
-                tabindex="0"
-              >
-                {dark ? '🌛' : '🌞'}
-              </Button>
-            </Text>
-            <Text>
-              <Link aria-label="Go to CV Page" to="/">
-                CV
-              </Link>{' '}
-              -{' '}
-              <Link
-                aria-label="Go to page that lists the tools I use"
-                to="/uses"
-              >
-                Uses
-              </Link>{' '}
-              -{' '}
-              <Link aria-label="Go to About Page" to="/about">
-                About
-              </Link>{' '}
-            </Text>
-          </Header>
-          <Switch>
-            <Route exact path="/">
-              <CVPage />
-            </Route>
-            <Route path="/uses">
-              <UsesPage />
-            </Route>
-            <Route path="/about">
-              <AboutPage />
-            </Route>
-            <Route>
-              <NotFoundPage />
-            </Route>
-          </Switch>
-          <Footer>
-            <Text>See you sooner :)</Text>
-            <Text>
-              Contact:{' '}
-              <Link to="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev">
-                bandungpenting@gmail.com
-              </Link>
-            </Text>
-            <Text>
-              Other site:{' '}
-              <Link to="https://reason.ybbond.dev">reason.ybbond.dev</Link>
-            </Text>
-          </Footer>
-        </InnerWrapper>
-      </OuterWrapper>
-    </ThemeProvider>
+    <Router history={history}>
+      <ThemeProvider theme={{mode: dark ? 'dark' : 'light'}}>
+        <Style dark={dark} />
+        <OuterWrapper>
+          <InnerWrapper>
+            <HeaderFooter dark={dark} toggleDark={toggleDark}>
+              {routes()}
+            </HeaderFooter>
+          </InnerWrapper>
+        </OuterWrapper>
+      </ThemeProvider>
+    </Router>
   );
 };
 
