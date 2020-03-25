@@ -1,9 +1,7 @@
 // @flow
 import React from 'react';
 
-import Link from '../Components/Link';
-import List from '../Components/List';
-import Text from '../Components/Text';
+import {Link, List, Text} from '../Components';
 
 const CVPage = () => {
   return (

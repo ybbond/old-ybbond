@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
 
-import Link from '../Components/Link';
-import Text from '../Components/Text';
+import {Link, Text} from '../Components';
 
 const NotFoundPage = () => {
   return (

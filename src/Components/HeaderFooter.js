@@ -3,9 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from 'styled-theming';
 
-import Button from './Button';
-import Link from './Link';
-import Text from './Text';
+import {Button, Link, Text} from './';
 import {colors} from '../Theme/colors';
 
 const borderColor = theme('mode', {

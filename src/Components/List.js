@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import styled, {css, type StyledComponent} from 'styled-components';
-import Text from './Text';
+import {Text} from './';
 import {colors} from '../Theme/colors';
 
 type Props = {|

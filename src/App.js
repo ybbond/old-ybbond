@@ -6,7 +6,7 @@ import {createBrowserHistory} from 'history';
 import theme from 'styled-theming';
 
 import routes from './routes';
-import HeaderFooter from './Components/HeaderFooter';
+import {HeaderFooter} from './Components';
 import Style from './Theme/Style';
 import {colors} from './Theme/colors';
 

@@ -1,9 +1,7 @@
 // @flow
 import React from 'react';
 
-import Text from '../Components/Text';
-import List from '../Components/List';
-import Link from '../Components/Link';
+import {List, Link, Text} from '../Components';
 
 const UsesPage = () => {
   return (
