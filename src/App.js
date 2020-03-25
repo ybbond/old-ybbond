@@ -81,29 +81,20 @@ const App = () => {
               </Button>
             </Text>
             <Text>
-              <Button
-                aria-label="Go to CV Page"
-                onClick={() => Link.goTo('/')}
-                tabindex="1"
-              >
-                <Link to="/">CV</Link>
-              </Button>{' '}
+              <Link aria-label="Go to CV Page" to="/">
+                CV
+              </Link>{' '}
               -{' '}
-              <Button
+              <Link
                 aria-label="Go to page that lists the tools I use"
-                onClick={() => Link.goTo('/uses')}
-                tabindex="2"
+                to="/uses"
               >
-                <Link to="/uses">Uses</Link>
-              </Button>{' '}
+                Uses
+              </Link>{' '}
               -{' '}
-              <Button
-                aria-label="Go to About Page"
-                onClick={() => Link.goTo('/about')}
-                tabindex="3"
-              >
-                <Link to="/about">About</Link>
-              </Button>
+              <Link aria-label="Go to About Page" to="/about">
+                About
+              </Link>{' '}
             </Text>
           </Header>
           <Switch>

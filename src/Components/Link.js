@@ -47,14 +47,15 @@ const Link = ({children, to, ...props}: LinkProps) => {
   }
 
   const {isExact = false} = useRouteMatch(to) || {};
-  const handleClick = () => {
+  const handleClick = e => {
+    e.preventDefault();
     history.push(to);
   };
 
   return (
     <LinkBase
       {...props}
-      as="span"
+      href={to}
       onClick={handleClick}
       isCurrentRoute={isExact}
     >

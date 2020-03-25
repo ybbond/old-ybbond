@@ -17,11 +17,6 @@ const Button: StyledComponent<ButtonProps, {}, {}> = styled.button`
   &::-moz-focus-inner {
     border: 0;
   }
-
-  &:focus {
-    outline: ${colors.lightSelection} solid 3px;
-    outline-offset: 7px;
-  }
 `;
 
 export default Button;
