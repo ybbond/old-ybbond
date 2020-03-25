@@ -17,6 +17,8 @@ const CVPage = () => {
       I cannot say that I am humble, but I learn from experience that each
       individuals, their own excellences.
       <br />I try to learn from everyone, and everything.
+      <br />
+      <br />૮ ・ﻌ・ა
     </Text>
   );
 };
