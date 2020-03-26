@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const ZopfliPlugin = require('zopfli-webpack-plugin');
 
 const config = {
   entry: path.resolve(__dirname, 'src/index'),
@@ -29,6 +30,13 @@ const config = {
       'process.env.GITHUB_READ_ONLY_TOKEN': JSON.stringify(
         process.env.GITHUB_READ_ONLY_TOKEN,
       ),
+    }),
+    new ZopfliPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'zopfli',
+      test: /\.(js|html)$/,
+      threshold: 10240,
+      minRatio: 0.8,
     }),
   ],
   devServer: {
