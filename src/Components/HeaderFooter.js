@@ -45,13 +45,17 @@ const HeaderFooter = ({children, dark, toggleDark}: HeaderFooterProps) => (
         <Link aria-label="Go to CV Page" to="/">
           CV
         </Link>{' '}
-        -{' '}
+        ::{' '}
         <Link aria-label="Go to page that lists the tools I use" to="/uses">
           Uses
         </Link>{' '}
-        -{' '}
+        ::{' '}
         <Link aria-label="Go to About Page" to="/about">
           About
+        </Link>{' '}
+        ::{' '}
+        <Link aria-label="Go to my Blog!" to="https://blog.ybbond.dev">
+          Blog 🌐
         </Link>{' '}
       </Text>
     </Header>
