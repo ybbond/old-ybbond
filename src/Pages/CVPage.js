@@ -57,9 +57,17 @@ const CVPage = () => {
           </Link>
         </List>
         <List as="li">
-          <Link to="https://github.com/ybbond">Github</Link>,{' '}
-          <Link to="https://www.instagram.com/ybbond">Instagram</Link>,{' '}
-          <Link to="https://twitter.com/bandungpenting">Twitter</Link>
+          <Link to="https://github.com/ybbond" data-hint="GitHub" rel="me">
+            Github
+          </Link>
+          , <Link to="https://www.instagram.com/ybbond">Instagram</Link>,{' '}
+          <Link
+            to="https://twitter.com/bandungpenting"
+            data-hint="Twitter"
+            rel="me"
+          >
+            Twitter
+          </Link>
         </List>
       </List>
     </React.Fragment>

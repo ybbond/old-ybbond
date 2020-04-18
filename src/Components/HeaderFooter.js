@@ -54,7 +54,12 @@ const HeaderFooter = ({children, dark, toggleDark}: HeaderFooterProps) => (
           About
         </Link>{' '}
         ::{' '}
-        <Link aria-label="Go to my Blog!" to="https://blog.ybbond.dev">
+        <Link
+          aria-label="Go to my Blog!"
+          to="https://blog.ybbond.dev"
+          data-hint="Blog"
+          rel="me"
+        >
           Blog 🌐
         </Link>{' '}
       </Text>
@@ -64,7 +69,11 @@ const HeaderFooter = ({children, dark, toggleDark}: HeaderFooterProps) => (
       <Text>See you sooner :)</Text>
       <Text>
         Contact:{' '}
-        <Link to="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev">
+        <Link
+          to="mailto:bandungpenting@gmail.com?Subject=From%20ybbond.dev"
+          data-hint="Email"
+          rel="me"
+        >
           bandungpenting@gmail.com
         </Link>
       </Text>

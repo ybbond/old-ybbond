@@ -16,7 +16,11 @@ const linkHoverColor = theme('mode', {
   dark: colors.orange,
 });
 
-type LinkProps = {to: string, children: React$Node};
+type LinkProps = {
+  to: string,
+  children: React$Node,
+  rel?: string,
+};
 
 const LinkBase: StyledComponent<{isCurrentRoute?: boolean}, {}, {}> = styled.a`
   color: ${({isCurrentRoute}) => (isCurrentRoute ? linkHoverColor : linkColor)};
@@ -30,7 +34,7 @@ const LinkBase: StyledComponent<{isCurrentRoute?: boolean}, {}, {}> = styled.a`
   }
 `;
 
-const Link = ({children, to, ...props}: LinkProps) => {
+const Link = ({children, to, rel, ...props}: LinkProps) => {
   const history = useHistory();
 
   Link.goTo = (to: string) => {
@@ -40,7 +44,12 @@ const Link = ({children, to, ...props}: LinkProps) => {
   const isExternal = to[0] !== '/';
   if (isExternal) {
     return (
-      <LinkBase {...props} target="_blank" rel="noopener noreferrer" href={to}>
+      <LinkBase
+        {...props}
+        target="_blank"
+        rel={rel ? rel : 'noopener noreferrer'}
+        href={to}
+      >
         {children}
       </LinkBase>
     );
