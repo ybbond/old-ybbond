@@ -7,6 +7,27 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ZopfliPlugin = require('zopfli-webpack-plugin');
+const RobotstxtPlugin = require('robotstxt-webpack-plugin');
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
+
+const robotOptions = {
+  policy: [
+    {
+      userAgent: 'Googlebot',
+      allow: '/',
+      crawlDelay: 2,
+    },
+    {
+      userAgent: '*',
+      allow: '/',
+      crawlDelay: 2,
+    },
+  ],
+  sitemap: 'http://ybbond.dev/sitemap.xml',
+  host: 'http://ybbond.dev',
+};
+
+const paths = ['/', '/uses/', '/uses', '/about/', '/about'];
 
 const config = {
   entry: path.resolve(__dirname, 'src/index'),
@@ -21,10 +42,14 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ybbond.dev',
+      title: 'Yohanes Bandung',
       template: 'public/index.html',
       favicon: 'public/favicon.ico',
     }),
+    new RobotstxtPlugin({
+      options: robotOptions,
+    }),
+    new SitemapPlugin('https://ybbond.dev', paths),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env.GITHUB_READ_ONLY_TOKEN': JSON.stringify(
