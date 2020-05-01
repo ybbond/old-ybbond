@@ -56,7 +56,7 @@ const HeaderFooter = ({children, dark, toggleDark}: HeaderFooterProps) => (
         ::{' '}
         <Link
           aria-label="Go to my Blog!"
-          to="https://blog.ybbond.dev"
+          to="https://ybbond.dev"
           data-hint="Blog"
           rel="me"
         >
